@@ -1,0 +1,23 @@
+<div>
+    <form id="searchByAlbumId" class="container m-0 align-items-center" [formGroup]="searchForm"
+        (ngSubmit)="search(searchForm.value)">
+        <div class="form-group">
+            <p>Please enter the Album Id and then press Search</p>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="criteriaInput" class="col-lg-2">Album Id:</label>
+                <mat-form-field class="col-lg-4">
+                    <input formControlName="fileName" matInput maxlength="255">
+                </mat-form-field>
+            </div>
+            <div>
+                <span class="offset-lg-2 col-lg-2">
+                    <button id="searchButton" mat-button color="primary" type="submit" [disabled]="!searchForm.valid">
+                        <mat-icon>search</mat-icon> Search
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>

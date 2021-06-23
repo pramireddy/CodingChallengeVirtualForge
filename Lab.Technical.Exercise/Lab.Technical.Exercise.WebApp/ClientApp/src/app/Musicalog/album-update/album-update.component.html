@@ -1,0 +1,56 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>Update Album</mat-card-title>
+        <form [formGroup]="ownerForm" autocomplete="off" novalidate (ngSubmit)="createOwner(ownerForm.value)"
+            fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" placeholder="Album Name" formControlName="albumName" id="albumName">
+                    <!-- <mat-hint align="end">Not more then 60 characters long.</mat-hint> -->
+                    <mat-error *ngIf="hasError('albumName', 'required')">Album Name is required</mat-error>
+                    <!-- <mat-error *ngIf="hasError('albumName', 'maxlength')">You have more than 60 characters</mat-error> -->
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Artist</mat-label>
+                    <mat-select formControlName="artistId">
+                        <mat-option *ngFor="let artist of formOptionsData.artists" [value]="artist.id">
+                            {{artist.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ownerForm.get('artistId').hasError('required')">Artist is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Lable</mat-label>
+                    <mat-select formControlName="labelId">
+                        <mat-option *ngFor="let label of formOptionsData.labels" [value]="label.id">
+                            {{label.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ownerForm.get('labelId').hasError('required')">Label is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="albumType">
+                        <mat-option *ngFor="let type of types" [value]="type.id">
+                            {{type.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ownerForm.get('albumType').hasError('required')">Type is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <input matInput type="number" placeholder="Stock" formControlName="stock">
+                    <mat-error *ngIf="hasError('stock', 'required')">Stock is required</mat-error>
+                </mat-form-field>
+                <br>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" [disabled]="!ownerForm.valid">Update</button>
+                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</section>

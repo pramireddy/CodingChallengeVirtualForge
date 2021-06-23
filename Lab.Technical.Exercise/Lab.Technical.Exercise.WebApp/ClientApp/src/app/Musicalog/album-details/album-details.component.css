@@ -1,0 +1,46 @@
+/* table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+} */
+
+table {
+    width: 100%;
+}
+
+.filter button {
+    margin-left: 1em;
+}
+
+.filters {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter {
+    margin: 0 0 0 5px;
+}
+
+.info {
+    margin-top: .75em;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mat-column-numberOfMonths {
+    text-align: center !important;
+}
+
+.mat-column-networkLayerId {
+    text-align: center !important;
+}
+
+.mat-column-marketId {
+    text-align: center !important;
+}

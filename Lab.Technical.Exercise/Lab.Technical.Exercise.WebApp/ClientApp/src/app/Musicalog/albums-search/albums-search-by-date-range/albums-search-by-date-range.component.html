@@ -1,0 +1,46 @@
+<div>
+    <form class="container m-0 align-items-center" #f="ngForm" [formGroup]="searchForm"
+        (ngSubmit)="search(searchForm.value)">
+
+        <div class="form-group">
+            <p>Please enter the from and to dates below to find scenarios and then press Search</p>
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                <label for="startDate" class="col-lg-2">From date</label>
+                <mat-form-field class="col-lg-2">
+                    <input matInput [matDatepicker]="startDate" formControlName="startDate" class="form-control"
+                        maxlength="10">
+                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="">
+                <label for="endDate" class="col-lg-2">To date</label>
+                <mat-form-field class="col-lg-2">
+                    <input matInput [matDatepicker]="endDate" formControlName="endDate" class="form-control"
+                        maxlength="10">
+                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="!validDates && f.submitted" class="pb-4">
+                <span class="col-lg-2">&nbsp;</span>
+                <p class="col-lg-10 alert-danger">To Date must not be before From Date</p>
+            </div>
+
+            <div class="">
+                <span class="offset-lg-2 col-lg-3">
+                    <button id="searchButton" mat-button color="primary" type="submit" [disabled]="!searchForm.valid">
+                        <mat-icon>search</mat-icon> Search
+                    </button>
+                </span>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,29 @@
+<div call="full-container">
+    <mat-card class="sectionSummary">
+        <mat-card-title>Search Albums</mat-card-title>
+        <mat-card-content>
+            <p>
+                Search for Albums by AlbumId and CreationDate range
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="sComponent">
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="By Album Id">
+                    <app-albums-search-by-albumid (notify)="onSeachByAlbumId($event)"></app-albums-search-by-albumid>
+                </mat-tab>
+                <mat-tab label="By Creation Date">
+                    <app-albums-search-by-date-range (notify)="onSeachByCreationDateRange($event)">
+                    </app-albums-search-by-date-range>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="searchString.length > 0"> {{searchString}}</mat-card>
+
+    <div *ngIf="searchByAlbumIdResult">
+        <app-album-summary [album]="searchByAlbumIdResult"> </app-album-summary>
+    </div>
+</div>
